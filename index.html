@@ -1,1 +1,847 @@
 
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#073d29">
+
+<title>সামিয়া এন্টারপ্রাইজ | ধানের আড়ৎ</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700;800&family=Tiro+Bangla&display=swap" rel="stylesheet">
+
+<style>
+:root {
+    --green: #075735;
+    --dark-green: #033b27;
+    --gold: #e9bd50;
+    --light-gold: #ffdf82;
+    --cream: #fff8e8;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    background: #fff;
+    font-family: 'Hind Siliguri', sans-serif;
+}
+
+/* ==============================
+   SPLASH SCREEN
+============================== */
+
+#splash {
+    position: fixed;
+    inset: 0;
+    z-index: 99999;
+    overflow: hidden;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 25px 20px 20px;
+    color: white;
+
+    background:
+        radial-gradient(ellipse at 50% 40%,
+            rgba(40,145,79,.45), transparent 55%),
+        linear-gradient(145deg,
+            #087448 0%,
+            #064b32 48%,
+            #022d1e 100%);
+
+    transition: opacity .65s ease, visibility .65s ease;
+}
+
+#splash.hide {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+}
+
+/* Decorative elements */
+
+.decor-circle {
+    position: absolute;
+    border: 1px solid rgba(255,255,255,.08);
+    border-radius: 50%;
+    pointer-events: none;
+}
+
+.decor-one {
+    width: 400px;
+    height: 400px;
+    top: -230px;
+    right: -150px;
+}
+
+.decor-two {
+    width: 450px;
+    height: 450px;
+    bottom: -290px;
+    left: -200px;
+}
+
+.decor-glow {
+    position: absolute;
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    background: rgba(255,205,84,.12);
+    filter: blur(75px);
+    pointer-events: none;
+}
+
+/* ==============================
+   BRAND HEADER
+============================== */
+
+.splash-header {
+    width: 100%;
+    max-width: 650px;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    position: relative;
+    z-index: 2;
+}
+
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 11px;
+}
+
+.brand-icon {
+    width: 43px;
+    height: 43px;
+    display: grid;
+    place-items: center;
+
+    font-size: 25px;
+    border-radius: 13px;
+
+    background: rgba(255,255,255,.12);
+    border: 1px solid rgba(255,255,255,.22);
+}
+
+.brand-name {
+    font-size: 17px;
+    font-weight: 800;
+    color: #fff;
+    letter-spacing: .3px;
+}
+
+.brand-subtitle {
+    font-size: 10px;
+    color: #e5d59c;
+    letter-spacing: .5px;
+}
+
+.version {
+    padding: 7px 13px;
+    border-radius: 25px;
+    border: 1px solid rgba(255,220,135,.5);
+    background: rgba(255,255,255,.08);
+    color: var(--light-gold);
+    font-size: 11px;
+    font-weight: 700;
+}
+
+/* ==============================
+   MAIN BRAND CONTENT
+============================== */
+
+.splash-main {
+    width: 100%;
+    max-width: 650px;
+    position: relative;
+    z-index: 2;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+
+    margin: auto 0;
+}
+
+/* Logo */
+
+.logo-frame {
+    width: 125px;
+    height: 125px;
+    position: relative;
+
+    display: grid;
+    place-items: center;
+
+    border-radius: 50%;
+
+    background: linear-gradient(
+        145deg,
+        #fff9df,
+        #e6c76e
+    );
+
+    border: 5px solid rgba(255,255,255,.85);
+
+    box-shadow:
+        0 0 0 7px rgba(231,192,84,.16),
+        0 18px 45px rgba(0,0,0,.30);
+
+    animation: float 3.5s ease-in-out infinite;
+}
+
+.logo-frame svg {
+    width: 90px;
+    height: 90px;
+}
+
+.logo-ring {
+    position: absolute;
+    inset: -10px;
+    border-radius: 50%;
+    border: 1px solid rgba(255,218,112,.5);
+    animation: ring 4s ease-in-out infinite;
+}
+
+@keyframes float {
+    0%,100% { transform: translateY(0); }
+    50% { transform: translateY(-8px); }
+}
+
+@keyframes ring {
+    0%,100% { transform: scale(1); opacity: .5; }
+    50% { transform: scale(1.1); opacity: 1; }
+}
+
+/* Company title */
+
+.company-title {
+    margin-top: 23px;
+
+    font-family: 'Tiro Bangla', serif;
+    font-size: clamp(29px, 6vw, 39px);
+    font-weight: bold;
+    line-height: 1.5;
+
+    color: #fff8df;
+
+    text-shadow: 0 3px 15px rgba(0,0,0,.25);
+}
+
+.company-title span {
+    color: var(--light-gold);
+}
+
+.title-decoration {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    margin: 8px 0 12px;
+}
+
+.title-decoration span {
+    width: 48px;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--gold));
+}
+
+.title-decoration span:last-child {
+    transform: rotate(180deg);
+}
+
+.title-decoration b {
+    color: var(--gold);
+    font-size: 13px;
+}
+
+.business-type {
+    display: inline-block;
+    padding: 7px 19px;
+    border-radius: 30px;
+
+    color: #ffebad;
+    background: rgba(255,208,92,.12);
+    border: 1px solid rgba(255,218,112,.35);
+
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.tagline {
+    margin-top: 12px;
+    color: #dcebdc;
+    font-size: 13px;
+}
+
+/* Business features */
+
+.features {
+    width: 100%;
+    max-width: 450px;
+
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    gap: 10px;
+
+    margin-top: 26px;
+}
+
+.feature {
+    padding: 12px 5px;
+    border-radius: 15px;
+
+    background: rgba(255,255,255,.08);
+    border: 1px solid rgba(255,255,255,.15);
+    backdrop-filter: blur(8px);
+}
+
+.feature-icon {
+    display: block;
+    font-size: 25px;
+    margin-bottom: 5px;
+}
+
+.feature-text {
+    font-size: 11px;
+    font-weight: 600;
+    color: #f8edcf;
+    line-height: 1.5;
+}
+
+/* Loading */
+
+.loading-panel {
+    width: 100%;
+    max-width: 330px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+
+    margin-top: 25px;
+    padding: 12px 15px;
+
+    border-radius: 16px;
+
+    background: rgba(0,30,20,.32);
+    border: 1px solid rgba(255,255,255,.16);
+}
+
+.spinner {
+    width: 24px;
+    height: 24px;
+    flex-shrink: 0;
+
+    border: 3px solid rgba(255,255,255,.2);
+    border-top-color: var(--gold);
+    border-radius: 50%;
+
+    animation: spin .8s linear infinite;
+}
+
+.loading-text {
+    text-align: left;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.loading-subtext {
+    text-align: left;
+    font-size: 10px;
+    color: #c6dec9;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+/* ==============================
+   FOOTER INSIDE SPLASH ONLY
+============================== */
+
+.splash-footer {
+    width: 100%;
+    max-width: 650px;
+    position: relative;
+    z-index: 2;
+
+    padding-top: 14px;
+    text-align: center;
+
+    border-top: 1px solid rgba(255,255,255,.13);
+}
+
+.developer {
+    font-size: 13px;
+    color: #e6eee4;
+}
+
+.developer strong {
+    color: var(--light-gold);
+    font-size: 17px;
+    font-weight: 800;
+}
+
+.social-links {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 9px;
+    margin-top: 8px;
+}
+
+.social-links a {
+    padding: 6px 12px;
+    border-radius: 25px;
+
+    color: white;
+    background: rgba(255,255,255,.09);
+    border: 1px solid rgba(255,255,255,.17);
+
+    font-size: 11px;
+    font-weight: 600;
+    text-decoration: none;
+
+    transition: .2s;
+}
+
+.social-links a:hover {
+    background: rgba(255,255,255,.2);
+}
+
+.copyright {
+    margin-top: 8px;
+    font-size: 10px;
+    color: rgba(255,255,255,.55);
+}
+
+/* ==============================
+   MAIN APP - NO HEADER/FOOTER
+============================== */
+
+#app-container {
+    position: fixed;
+    inset: 0;
+
+    width: 100%;
+    height: 100%;
+    height: 100dvh;
+
+    background: white;
+    opacity: 0;
+    transition: opacity .5s ease;
+}
+
+#app-container.visible {
+    opacity: 1;
+}
+
+#main-app {
+    display: block;
+    width: 100%;
+    height: 100%;
+    border: none;
+    background: white;
+}
+
+/* ==============================
+   RESPONSIVE
+============================== */
+
+@media(max-width:480px) {
+
+    #splash {
+        padding: 18px 14px 14px;
+    }
+
+    .brand-icon {
+        width: 37px;
+        height: 37px;
+        font-size: 21px;
+    }
+
+    .brand-name {
+        font-size: 14px;
+    }
+
+    .brand-subtitle {
+        font-size: 9px;
+    }
+
+    .version {
+        padding: 6px 9px;
+        font-size: 10px;
+    }
+
+    .logo-frame {
+        width: 105px;
+        height: 105px;
+    }
+
+    .logo-frame svg {
+        width: 76px;
+        height: 76px;
+    }
+
+    .company-title {
+        margin-top: 18px;
+        font-size: 29px;
+    }
+
+    .business-type {
+        font-size: 12px;
+        padding: 6px 14px;
+    }
+
+    .tagline {
+        font-size: 11px;
+    }
+
+    .features {
+        gap: 7px;
+        margin-top: 20px;
+    }
+
+    .feature {
+        padding: 9px 3px;
+    }
+
+    .feature-icon {
+        font-size: 22px;
+    }
+
+    .feature-text {
+        font-size: 10px;
+    }
+
+    .loading-panel {
+        margin-top: 18px;
+    }
+
+    .splash-footer {
+        padding-top: 10px;
+    }
+}
+
+@media(max-height:700px) {
+
+    #splash {
+        padding-top: 10px;
+        padding-bottom: 9px;
+    }
+
+    .logo-frame {
+        width: 82px;
+        height: 82px;
+    }
+
+    .logo-frame svg {
+        width: 62px;
+        height: 62px;
+    }
+
+    .company-title {
+        margin-top: 10px;
+        font-size: 25px;
+    }
+
+    .title-decoration {
+        margin: 4px 0 6px;
+    }
+
+    .tagline {
+        margin-top: 6px;
+    }
+
+    .features {
+        margin-top: 12px;
+    }
+
+    .feature {
+        padding: 6px 3px;
+    }
+
+    .loading-panel {
+        margin-top: 11px;
+        padding: 8px;
+    }
+
+    .splash-footer {
+        padding-top: 6px;
+    }
+
+    .social-links {
+        margin-top: 5px;
+    }
+
+    .copyright {
+        margin-top: 4px;
+    }
+}
+
+@media(prefers-reduced-motion:reduce) {
+    *,*::before,*::after {
+        animation: none !important;
+        transition: none !important;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- SPLASH SCREEN -->
+
+<div id="splash">
+
+    <div class="decor-circle decor-one"></div>
+    <div class="decor-circle decor-two"></div>
+    <div class="decor-glow" style="top:25%;left:-100px"></div>
+    <div class="decor-glow" style="bottom:20%;right:-100px"></div>
+
+    <!-- BRAND HEADER -->
+
+    <header class="splash-header">
+
+        <div class="brand">
+            <div class="brand-icon">🌾</div>
+
+            <div>
+                <div class="brand-name">SAMIA ENTERPRISE</div>
+                <div class="brand-subtitle">TRUST • QUALITY • BUSINESS</div>
+            </div>
+        </div>
+
+        <div class="version">✦ VERSION 3.0</div>
+
+    </header>
+
+    <!-- MAIN CONTENT -->
+
+    <main class="splash-main">
+
+        <!-- CUSTOM RICE LOGO -->
+
+        <div class="logo-frame">
+            <div class="logo-ring"></div>
+
+            <svg viewBox="0 0 100 100"
+                 xmlns="http://www.w3.org/2000/svg"
+                 fill="none">
+
+                <circle cx="50" cy="50" r="46"
+                        fill="#fff7d9"/>
+
+                <path d="M10 75 Q50 55 90 75 V90 H10Z"
+                      fill="#8db94d"/>
+
+                <path d="M12 79 Q50 66 88 79"
+                      stroke="#4c913b" stroke-width="3"/>
+
+                <path d="M49 81 Q43 51 28 35"
+                      stroke="#288746" stroke-width="4"
+                      stroke-linecap="round"/>
+
+                <path d="M50 81 Q59 49 76 35"
+                      stroke="#288746" stroke-width="4"
+                      stroke-linecap="round"/>
+
+                <path d="M50 81 Q47 45 50 16"
+                      stroke="#277d3d" stroke-width="3"
+                      stroke-linecap="round"/>
+
+                <path d="M50 24 Q38 18 41 10 Q52 11 50 24Z"
+                      fill="#d5a83c"/>
+
+                <path d="M50 35 Q37 29 40 21 Q51 23 50 35Z"
+                      fill="#e3b94d"/>
+
+                <path d="M50 46 Q63 39 61 31 Q50 34 50 46Z"
+                      fill="#d5a83c"/>
+
+                <path d="M50 57 Q38 51 40 43 Q51 46 50 57Z"
+                      fill="#e3b94d"/>
+
+                <path d="M51 67 Q64 60 62 52 Q51 55 51 67Z"
+                      fill="#d5a83c"/>
+
+                <path d="M40 63 Q20 60 18 44 Q34 44 40 63Z"
+                      fill="#47a74d"/>
+
+                <path d="M58 57 Q65 39 82 36 Q83 53 58 57Z"
+                      fill="#47a74d"/>
+
+                <path d="M17 86 Q50 76 83 86"
+                      stroke="#d9b54b" stroke-width="2.5"
+                      stroke-linecap="round"/>
+
+            </svg>
+        </div>
+
+        <!-- COMPANY NAME -->
+
+        <h1 class="company-title">
+            সামিয়া <span>এন্টারপ্রাইজ</span>
+        </h1>
+
+        <div class="title-decoration">
+            <span></span>
+            <b>◆</b>
+            <span></span>
+        </div>
+
+        <div class="business-type">
+            🌾 ধানের আড়ৎ ও পাইকারি ব্যবসা
+        </div>
+
+        <p class="tagline">
+            বিশ্বস্ততায় ব্যবসা, মানসম্মত ধানের নিশ্চয়তা
+        </p>
+
+        <!-- BUSINESS FEATURES -->
+
+        <div class="features">
+
+            <div class="feature">
+                <span class="feature-icon">🌾</span>
+                <div class="feature-text">
+                    ধান ক্রয়-বিক্রয়
+                </div>
+            </div>
+
+            <div class="feature">
+                <span class="feature-icon">⚖️</span>
+                <div class="feature-text">
+                    ওজন ও হিসাব
+                </div>
+            </div>
+
+            <div class="feature">
+                <span class="feature-icon">📊</span>
+                <div class="feature-text">
+                    ব্যবসা ব্যবস্থাপনা
+                </div>
+            </div>
+
+        </div>
+
+        <!-- LOADING -->
+
+        <div class="loading-panel">
+
+            <div class="spinner"></div>
+
+            <div>
+                <div class="loading-text">
+                    সামিয়া এন্টারপ্রাইজ
+                </div>
+                <div class="loading-subtext">
+                    আপনার ব্যবসার ড্যাশবোর্ড প্রস্তুত হচ্ছে...
+                </div>
+            </div>
+
+        </div>
+
+    </main>
+
+    <!-- DEVELOPER CREDIT -->
+
+    <footer class="splash-footer">
+
+        <div class="developer">
+            Designed & Developed by
+            <strong>WebToCraft</strong>
+        </div>
+
+        <div class="social-links">
+
+            <a href="https://webtocraft.pages.dev/"
+               target="_blank" rel="noopener noreferrer">
+                🌐 Website
+            </a>
+
+            <a href="https://facebook.com/WebToCraft"
+               target="_blank" rel="noopener noreferrer">
+                Facebook
+            </a>
+
+            <a href="https://instagram.com/WebToCraft"
+               target="_blank" rel="noopener noreferrer">
+                Instagram
+            </a>
+
+        </div>
+
+        <div class="copyright">
+            © 2026 WebToCraft. All Rights Reserved.
+        </div>
+
+    </footer>
+
+</div>
+
+
+<!-- MAIN BUSINESS APP: FULL SCREEN -->
+
+<div id="app-container">
+
+    <iframe
+        id="main-app"
+        src="https://script.google.com/macros/s/AKfycbyWgOE2lleaIlsxH2FqGzo2-mpsy01OqmSyxhTIHGppxa5EaM900MpikzyszK3brL83Fg/exec"
+        title="Samia Enterprise Business Management"
+        allow="clipboard-read; clipboard-write"
+        loading="eager">
+    </iframe>
+
+</div>
+
+
+<!-- INITIALIZATION -->
+
+<script>
+(function () {
+
+    "use strict";
+
+    const splash = document.getElementById("splash");
+    const app = document.getElementById("app-container");
+
+    const SPLASH_DURATION = 1500;
+
+    function startApp() {
+
+        app.classList.add("visible");
+
+        splash.classList.add("hide");
+
+        setTimeout(function () {
+            splash.remove();
+        }, 700);
+
+    }
+
+    setTimeout(startApp, SPLASH_DURATION);
+
+})();
+</script>
+
+</body>
+</html>
